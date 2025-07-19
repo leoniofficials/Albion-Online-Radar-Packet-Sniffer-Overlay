@@ -14,16 +14,16 @@
         ShowInTaskbar="False"
         Title="Albion Radar" Height="450" Width="800">
 
-    <!-- Ana çerçeve, yuvarlak köşeli ve gölgeli -->
+   
     <Border CornerRadius="15" Padding="10" Background="#CC121212" BorderThickness="1" BorderBrush="#FF4B4B4B" SnapsToDevicePixels="True">
         <Grid>
 
-            <!-- Blur efekti için arka plan -->
+          
             <Grid.Effect>
                 <DropShadowEffect BlurRadius="20" Color="Black" ShadowDepth="0" Opacity="0.8"/>
             </Grid.Effect>
 
-            <!-- Üstte başlık çubuğu gibi şeffaf arka plan -->
+          
             <Border Background="#77000000" CornerRadius="10" Height="35" VerticalAlignment="Top" Margin="0,0,0,10">
                 <Grid>
                     <TextBlock Text="sususoftware.xyz"

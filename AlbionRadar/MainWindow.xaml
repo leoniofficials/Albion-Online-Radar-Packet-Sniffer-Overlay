@@ -8,23 +8,55 @@
         xmlns:tb="http://www.hardcodet.net/taskbar"
         mc:Ignorable="d"
         WindowStyle="None"
-        Topmost="True"
-        Background="Transparent"
-        ShowInTaskbar="False"
         AllowsTransparency="True"
+        Background="Transparent"
+        Topmost="True"
+        ShowInTaskbar="False"
         Title="Albion Radar" Height="450" Width="800">
 
-    <Grid Background="Transparent">
-        <uc:RadarControl RadarEntities="{Binding RadarEntities, Mode=OneWay}" MainPlayer="{Binding MainPlayer, Mode=OneWay}"/>
-        <tb:TaskbarIcon x:Name="MyNotifyIcon"
-                    IconSource="pack://application:,,,/AlbionRadar;component/Assets/favicon.ico"
-                    ToolTipText="Albion Radar"
-                    TrayMouseDoubleClick="MyNotifyIcon_TrayMouseDoubleClick">
-            <tb:TaskbarIcon.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="Exit" Click="MenuItem_Exit_Click" />
-                </ContextMenu>
-            </tb:TaskbarIcon.ContextMenu>
-        </tb:TaskbarIcon>
-    </Grid>
+    <!-- Ana çerçeve, yuvarlak köşeli ve gölgeli -->
+    <Border CornerRadius="15" Padding="10" Background="#CC121212" BorderThickness="1" BorderBrush="#FF4B4B4B" SnapsToDevicePixels="True">
+        <Grid>
+
+            <!-- Blur efekti için arka plan -->
+            <Grid.Effect>
+                <DropShadowEffect BlurRadius="20" Color="Black" ShadowDepth="0" Opacity="0.8"/>
+            </Grid.Effect>
+
+            <!-- Üstte başlık çubuğu gibi şeffaf arka plan -->
+            <Border Background="#77000000" CornerRadius="10" Height="35" VerticalAlignment="Top" Margin="0,0,0,10">
+                <Grid>
+                    <TextBlock Text="sususoftware.xyz"
+                               FontWeight="Bold"
+                               FontSize="18"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Foreground="White"
+                               FontFamily="Segoe UI"
+                               TextOptions.TextFormattingMode="Display"
+                               TextOptions.TextRenderingMode="ClearType" />
+                </Grid>
+            </Border>
+
+            <!-- Radar kontrol alanı, başlığın altına geniş yer verelim -->
+            <uc:RadarControl RadarEntities="{Binding RadarEntities, Mode=OneWay}"
+                             MainPlayer="{Binding MainPlayer, Mode=OneWay}"
+                             Margin="0,50,0,0"
+                             ClipToBounds="True"
+                             />
+
+            <!-- Görev çubuğu ikon ayarları -->
+            <tb:TaskbarIcon x:Name="MyNotifyIcon"
+                            IconSource="pack://application:,,,/AlbionRadar;component/Assets/favicon.ico"
+                            ToolTipText="Albion Radar"
+                            TrayMouseDoubleClick="MyNotifyIcon_TrayMouseDoubleClick">
+                <tb:TaskbarIcon.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Exit" Click="MenuItem_Exit_Click" />
+                    </ContextMenu>
+                </tb:TaskbarIcon.ContextMenu>
+            </tb:TaskbarIcon>
+
+        </Grid>
+    </Border>
 </Window>
